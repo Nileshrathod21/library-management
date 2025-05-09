@@ -1,0 +1,22 @@
+.custom-table-wrapper {
+  width: 90%;
+  margin: auto;
+}
+
+.custom-table-wrapper .MuiPaper-root {
+  box-shadow: none;
+  border: 1px solid #cac4c4;
+  border-top: none;
+  border-radius: 4px;
+  padding-top: 15px;
+}
+
+.custom-table-wrapper .MuiPaper-elevation {
+  box-shadow: none;
+}
+
+.css-7ijws3-MuiTableCell-root[data-pinned="true"]:before, .css-148y9qz-MuiTableCell-root[data-pinned="true"]:before {
+  box-shadow: none !important;
+  background: none !important;
+}
+/*# sourceMappingURL=Book-Management.aa436662.css.map */

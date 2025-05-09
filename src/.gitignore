@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+
+# Parcel cache
+.parcel-cache/
+
+# Build output
+dist/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db

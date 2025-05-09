@@ -1,0 +1,30 @@
+/* Style the table wrapper */
+.custom-table-wrapper {
+    width: 90%; /* Set the table width to 80% */
+    margin: auto; /* Center the table */
+    /* background-color: #1976d2; Set the background color to blue */
+     /* Add border around the table */
+     /* margin-top: 5px; */
+  }
+  
+  /* Style the table cells with borders */
+ 
+  
+  /* Style the Paper component */
+  .custom-table-wrapper .MuiPaper-root {
+    box-shadow: none; /* Remove default shadow */
+    border-radius: 4px; /* Set border radius for rounded corners */
+    border: 1px solid rgb(202, 196, 196);
+    border-top: none;
+    padding-top: 15px;
+  }
+  
+  .custom-table-wrapper .MuiPaper-elevation {
+    box-shadow: none; /* Remove elevation shadow */
+    
+  }
+
+.css-7ijws3-MuiTableCell-root[data-pinned="true"]:before , .css-148y9qz-MuiTableCell-root[data-pinned="true"]:before{
+  box-shadow: none !important;
+  background: none !important;
+}
