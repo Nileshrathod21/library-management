@@ -36,7 +36,7 @@ const TopNavbar = () => {
   // });
 
   return (
-    <div className="sticky top-0 w-full bg-white shadow-md px-6 py-3 flex justify-between items-center z-50 rounded-none ">
+    <div className="sticky top-0 bg-white shadow-md px-6 py-3 flex justify-between items-center z-50 rounded-none ">
       {/* Left Section: Profile */}
       <div className="flex items-center gap-3">
         <UserCircleIcon className="h-10 w-10 text-gray-600" />

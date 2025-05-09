@@ -15,6 +15,7 @@ import {
   InboxIcon,
   PowerIcon,
 } from "@heroicons/react/24/solid";
+import { Link } from "react-router-dom";
 
 function DefaultSidebar() {
   return (
@@ -50,7 +51,7 @@ function DefaultSidebar() {
             {/* <PresentationChartBarIcon className="h-5 w-5" /> */}
             {/* <img src={dashboardicon} className="h-5 w-5" alt="Dashboard" /> */}
           </ListItemPrefix>
-          Dashboard
+          <Link to={"/Dashboard"}>Dashboard</Link>
         </ListItem>
         <ListItem>
           <ListItemPrefix>
@@ -92,7 +93,7 @@ function DefaultSidebar() {
 
             {/* <InboxIcon className="h-5 w-5" /> */}
           </ListItemPrefix>
-          Books
+          <Link to="/book">Books</Link>
           {/* <ListItemSuffix>
             <Chip
               value="14"
@@ -140,7 +141,7 @@ function DefaultSidebar() {
 
             {/* <UserCircleIcon className="h-5 w-5" /> */}
           </ListItemPrefix>
-          Users
+          <Link to="/Users">Users</Link>
         </ListItem>
         <ListItem>
           <ListItemPrefix>

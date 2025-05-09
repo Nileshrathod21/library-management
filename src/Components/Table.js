@@ -8,7 +8,6 @@ import {
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import "../Components/Table.css";
-
 // Material UI Imports
 import {
   Box,
@@ -25,8 +24,9 @@ import { AccountCircle, Margin, Send } from "@mui/icons-material";
 // Mock Data
 import { data } from "../../src/Components/TableData";
 import { useMemo } from "react";
+import { useParams } from "react-router";
 
-const Example = () => {
+const Example = ({ isBook, title }) => {
   const columns = useMemo(
     () => [
       {
@@ -182,35 +182,41 @@ const Example = () => {
               gap: "0.5rem",
             }}
           >
-            <Button
-              color="inherit"
-              // disabled={!table.getIsSomeRowsSelected()}
-              // onClick={handleContact}
-              variant="contained"
-              sx={{
-                borderTopLeftRadius: "12px",
-                borderBottomLeftRadius: "12px",
-              }}
-            >
-              Borrowed Books
-            </Button>
-            <Button
-              // color="black"
-              // disabled={!table.getIsSomeRowsSelected()}
-              // onClick={handleContact}
-              variant="contained"
-              sx={{
-                backgroundColor: "black",
-                color: "white",
-                borderTopRightRadius: "12px",
-                borderBottomRightRadius: "12px",
-                "&:hover": {
-                  backgroundColor: "#333",
-                },
-              }}
-            >
-              Overdue Borrowers
-            </Button>
+            {!isBook ? (
+              <>
+                <Button
+                  color="inherit"
+                  // disabled={!table.getIsSomeRowsSelected()}
+                  // onClick={handleContact}
+                  variant="contained"
+                  sx={{
+                    borderTopLeftRadius: "12px",
+                    borderBottomLeftRadius: "12px",
+                  }}
+                >
+                  Borrowed Books
+                </Button>
+                <Button
+                  // color="black"
+                  // disabled={!table.getIsSomeRowsSelected()}
+                  // onClick={handleContact}
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "black",
+                    color: "white",
+                    borderTopRightRadius: "12px",
+                    borderBottomRightRadius: "12px",
+                    "&:hover": {
+                      backgroundColor: "#333",
+                    },
+                  }}
+                >
+                  Overdue Borrowers
+                </Button>
+              </>
+            ) : (
+              <h1 className="font-bold">{title}</h1>
+            )}
           </Box>
           <MRT_GlobalFilterTextField table={table} />
         </Box>
@@ -227,10 +233,10 @@ const Example = () => {
 
 // Date Picker Imports - these should just be in your Context Provider
 
-const ExampleWithLocalizationProvider = () => (
+const ExampleWithLocalizationProvider = ({ isBook, title }) => (
   // App.tsx or AppProviders file
   <LocalizationProvider dateAdapter={AdapterDayjs}>
-    <Example />
+    <Example isBook={isBook} title={title} />
   </LocalizationProvider>
 );
 
