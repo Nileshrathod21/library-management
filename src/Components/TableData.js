@@ -6,6 +6,8 @@ export const data = [
     description: "Software Engineer",
     startDate: "2021-01-01",
     signatureCatchPhrase: "Write clean code!",
+    id: "01",
+    userId: "1000",
   },
   {
     firstName: "John",
@@ -14,6 +16,8 @@ export const data = [
     description: "Software Engineer",
     startDate: "2021-01-01",
     signatureCatchPhrase: "Write clean code!",
+    id: "02",
+    userId: "10002",
   },
   {
     firstName: "John",
@@ -22,6 +26,8 @@ export const data = [
     description: "Software Engineer",
     startDate: "2021-01-01",
     signatureCatchPhrase: "Write clean code!",
+    id: "03",
+    userId: "10003",
   },
   {
     firstName: "John",
@@ -30,6 +36,8 @@ export const data = [
     description: "Software Engineer",
     startDate: "2021-01-01",
     signatureCatchPhrase: "Write clean code!",
+    id: "04",
+    userId: "10004",
   },
   {
     firstName: "John",
@@ -38,6 +46,8 @@ export const data = [
     description: "Software Engineer",
     startDate: "2021-01-01",
     signatureCatchPhrase: "Write clean code!",
+    id: "05",
+    userId: "10005",
   },
   {
     firstName: "John",
@@ -46,6 +56,8 @@ export const data = [
     description: "Software Engineer",
     startDate: "2021-01-01",
     signatureCatchPhrase: "Write clean code!",
+    id: "06",
+    userId: "10006",
   },
 
   // Add more mock data as needed

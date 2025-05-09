@@ -30,6 +30,22 @@ const Example = () => {
   const columns = useMemo(
     () => [
       {
+        accessorKey: "id",
+        header: "ID",
+        size: 100,
+      },
+      {
+        accessorKey: "userId",
+        header: "User ID",
+        size: 150,
+      },
+      {
+        accessorKey: "amount",
+        header: "Amount",
+        size: 120,
+        Cell: ({ cell }) => `$${cell.getValue()?.toFixed(2)}`, // format as currency
+      },
+      {
         accessorFn: (row) => `${row.firstName} ${row.lastName}`, // accessorFn used to join multiple data into a single cell
         id: "name", // id is still required when using accessorFn instead of accessorKey
         header: "Name",
