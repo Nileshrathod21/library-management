@@ -4,6 +4,7 @@ import { ThemeProvider } from "@material-tailwind/react";
 import ExampleWithLocalizationProvider from "./Components/Table";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Components/Layout";
+import Dashboard from "./Components/dashboardgraph";
 
 function Applayout() {
   // return (
@@ -42,10 +43,7 @@ function Applayout() {
               />
             }
           />
-          <Route
-            path="/Dashboard"
-            element={<ExampleWithLocalizationProvider />}
-          />
+          <Route path="/Dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>
