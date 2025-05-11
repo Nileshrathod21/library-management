@@ -32,14 +32,18 @@ const Dashboard = () => {
             ))}
           </Pie>
         </PieChart>
-        <div className="mt-4 flex gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full bg-[#3f3f3f]" />
-            <span className="text-sm">Total Borrowed Books</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full bg-[#0a0a0a]" />
-            <span className="text-sm">Total Returned Books</span>
+        <div className=" flex items-center gap-1">
+          <div className="bg-black h-16 w-0.5 mr-2"></div>
+
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-4 h-4 rounded-full bg-[#3f3f3f] " />
+              <span className="text-sm">Total Borrowed Books</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-4 h-4 rounded-full bg-[#0a0a0a]" />
+              <span className="text-sm">Total Returned Books</span>
+            </div>
           </div>
         </div>
       </div>
@@ -51,6 +55,7 @@ const Dashboard = () => {
             <Card>
               <CardContent className="flex items-center gap-4 p-6">
                 <User className="text-gray-700" />
+                <div className="bg-black h-16 w-0.5 mr-2"></div>
                 <div>
                   <p className="text-2xl font-bold">0150</p>
                   <p>Total User Base</p>
@@ -60,13 +65,14 @@ const Dashboard = () => {
             <Card>
               <CardContent className="flex items-center gap-4 p-6">
                 <BookOpen className="text-gray-700" />
+                <div className="bg-black h-16 w-0.5 mr-2"></div>
                 <div>
                   <p className="text-2xl font-bold">01500</p>
                   <p>Total Book Count</p>
                 </div>
               </CardContent>
             </Card>
-            <Card>
+            {/* <Card>
               <CardContent className="flex items-center gap-4 p-6">
                 <Building className="text-gray-700" />
                 <div>
@@ -74,7 +80,7 @@ const Dashboard = () => {
                   <p>Branch Count</p>
                 </div>
               </CardContent>
-            </Card>
+            </Card> */}
           </div>
 
           {/* Right Panels */}
@@ -89,6 +95,7 @@ const Dashboard = () => {
                 >
                   <div className="flex items-center gap-3">
                     <User />
+                    <div className="bg-black h-16 w-0.5 mr-2"></div>
                     <div>
                       <p>Sasmith Gunasekara</p>
                       <p className="text-sm text-gray-500">Borrowed ID: 10</p>
@@ -133,6 +140,7 @@ const Dashboard = () => {
                   >
                     <div className="flex items-center gap-3">
                       <User />
+                      <div className="bg-black h-16 w-0.5 mr-2"></div>
                       <div>
                         <p>Nisal Gunasekara</p>
                         <p className="text-sm text-gray-500">Admin ID: 1</p>

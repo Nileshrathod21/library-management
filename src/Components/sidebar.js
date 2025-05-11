@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 
 function DefaultSidebar() {
   return (
-    <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-black rounded-none text-white">
+    <Card className="h-screen w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5 bg-black rounded-none text-white">
       <div className="mb-2 p-4">
         <Typography variant="h5" color="blue-gray">
           Sidebar
@@ -70,7 +70,7 @@ function DefaultSidebar() {
 
             {/* <ShoppingBagIcon className="h-5 w-5" /> */}
           </ListItemPrefix>
-          Catalog
+          <Link to="/Catalog">Catalog</Link>
         </ListItem>
         <ListItem>
           <ListItemPrefix>

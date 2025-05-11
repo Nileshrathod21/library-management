@@ -7,7 +7,7 @@ export default function Layout() {
   const location = useLocation();
 
   return (
-    <div className="flex w-screen">
+    <div className="flex w-screen ">
       <DefaultSidebar />
       <main className="w-full h-auto">
         <TopNavbar />

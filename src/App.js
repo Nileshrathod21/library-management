@@ -44,6 +44,10 @@ function Applayout() {
             }
           />
           <Route path="/Dashboard" element={<Dashboard />} />
+          <Route
+            path="/Catalog"
+            element={<ExampleWithLocalizationProvider />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
