@@ -113,5 +113,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "App.js"
+  "type": "commonjs"
 }

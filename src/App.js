@@ -38,7 +38,7 @@ function Applayout() {
             path="/Users"
             element={
               <ExampleWithLocalizationProvider
-                isBook={true}
+                isBook={false}
                 title={"Users Management"}
               />
             }

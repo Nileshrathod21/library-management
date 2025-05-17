@@ -20,6 +20,7 @@ import {
 
 // Icons Imports
 import { AccountCircle, Margin, Send } from "@mui/icons-material";
+import { Add } from "@mui/icons-material";
 
 // Mock Data
 import { data } from "../../src/Components/TableData";
@@ -180,14 +181,15 @@ const Example = ({ isBook, title }) => {
             sx={{
               display: "flex",
               gap: "0.5rem",
+              alignItems: "center",
             }}
           >
-            {!isBook ? (
+            {typeof isBook === "boolean" ? (
+              <h1 className="font-bold text-xl">{title}</h1>
+            ) : (
               <>
                 <Button
                   color="inherit"
-                  // disabled={!table.getIsSomeRowsSelected()}
-                  // onClick={handleContact}
                   variant="contained"
                   sx={{
                     borderTopLeftRadius: "12px",
@@ -197,9 +199,6 @@ const Example = ({ isBook, title }) => {
                   Borrowed Books
                 </Button>
                 <Button
-                  // color="black"
-                  // disabled={!table.getIsSomeRowsSelected()}
-                  // onClick={handleContact}
                   variant="contained"
                   sx={{
                     backgroundColor: "black",
@@ -214,11 +213,34 @@ const Example = ({ isBook, title }) => {
                   Overdue Borrowers
                 </Button>
               </>
-            ) : (
-              <h1 className="font-bold">{title}</h1>
             )}
           </Box>
-          <MRT_GlobalFilterTextField table={table} />
+
+          <Box sx={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+            {(isBook === true || isBook === false) && (
+              <Button
+                variant="contained"
+                startIcon={<Add />}
+                onClick={() => {
+                  console.log(isBook ? "Add Book clicked" : "Add User clicked");
+                }}
+                sx={{
+                  backgroundColor: "black",
+                  color: "white",
+                  textTransform: "none",
+                  borderRadius: "8px",
+                  px: "16px",
+                  "&:hover": {
+                    backgroundColor: "#222",
+                  },
+                }}
+              >
+                {isBook ? "Add Book" : "Add User"}
+              </Button>
+            )}
+
+            <MRT_GlobalFilterTextField table={table} />
+          </Box>
         </Box>
       );
     },
