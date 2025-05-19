@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "@material-tailwind/react";
 import ExampleWithLocalizationProvider from "./Components/Table";
@@ -7,6 +7,8 @@ import Layout from "./Components/Layout";
 import Dashboard from "./Components/dashboardgraph";
 import { catlogData } from "../TableData";
 import { Box } from "@mui/material";
+import { BooksData } from "./Components/BooksData";
+import { UserData } from "./Components/UserData";
 
 function Applayout() {
   // return (
@@ -23,7 +25,7 @@ function Applayout() {
   //   </ThemeProvider>
   // );
 
-  const studentColumns = useMemo(
+  const UserColumns = useMemo(
     () => [
       { accessorKey: "id", header: "ID" },
       { accessorKey: "name", header: "Name" },
@@ -105,7 +107,7 @@ function Applayout() {
     []
   );
 
-  const teacherColumns = useMemo(
+  const BooksColumns = useMemo(
     () => [
       { accessorKey: "id", header: "ID" },
       { accessorKey: "name", header: "Name" },
@@ -119,16 +121,6 @@ function Applayout() {
     []
   );
 
-  const studentData = [
-    { id: 1, name: "Alice", grade: "A", enrolled: true },
-    { id: 2, name: "Bob", grade: "B", enrolled: false },
-  ];
-
-  const teacherData = [
-    { id: 1, name: "Mr. Smith", subject: "Math", hireDate: "2019-08-15" },
-    { id: 2, name: "Ms. Johnson", subject: "English", hireDate: "2020-01-10" },
-  ];
-
   return (
     <BrowserRouter>
       <Routes>
@@ -139,8 +131,8 @@ function Applayout() {
               <ExampleWithLocalizationProvider
                 isBook={true}
                 title={"Book Management"}
-                columns={teacherColumns}
-                data={teacherData}
+                columns={BooksColumns}
+                data={BooksData}
               />
             }
           />
@@ -150,8 +142,8 @@ function Applayout() {
               <ExampleWithLocalizationProvider
                 isBook={false}
                 title={"Users Management"}
-                columns={studentColumns}
-                data={studentData}
+                columns={UserColumns}
+                data={UserData}
 
                 // column={useMemo(
                 //   () => [
