@@ -9,8 +9,13 @@ import { catlogData } from "../TableData";
 import { Box } from "@mui/material";
 import { BooksData } from "./Components/BooksData";
 import { UserData } from "./Components/UserData";
+import SignupPage from "./Components/Signupforme";
+import { useEffect } from "react";
+import { method } from "detect-libc";
+import Book from "./Page/Book";
+import BooksPage from "./Page/Book";
 
-function Applayout() {
+export function Applayout() {
   // return (
   //   <ThemeProvider>
   //     <div className="flex">
@@ -107,35 +112,11 @@ function Applayout() {
     []
   );
 
-  const BooksColumns = useMemo(
-    () => [
-      { accessorKey: "id", header: "ID" },
-      { accessorKey: "name", header: "Name" },
-      { accessorKey: "subject", header: "Subject" },
-      {
-        accessorKey: "hireDate",
-        header: "Hire Date",
-        Cell: ({ cell }) => new Date(cell.getValue()).toLocaleDateString(),
-      },
-    ],
-    []
-  );
-
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            path="/book"
-            element={
-              <ExampleWithLocalizationProvider
-                isBook={true}
-                title={"Book Management"}
-                columns={BooksColumns}
-                data={BooksData}
-              />
-            }
-          />
+          <Route path="/book" element={<BooksPage />} />
           <Route
             path="/Users"
             element={
@@ -229,6 +210,7 @@ function Applayout() {
           />
         </Route>
       </Routes>
+      {/* <SignupPage /> */}
     </BrowserRouter>
   );
 }

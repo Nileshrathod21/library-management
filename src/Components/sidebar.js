@@ -26,7 +26,7 @@ function DefaultSidebar() {
         </Typography>
       </div>
       <List>
-        <ListItem>
+        <ListItem className="hover:bg-white hover:text-black">
           <ListItemPrefix>
             <svg
               width="24"
@@ -53,7 +53,7 @@ function DefaultSidebar() {
           </ListItemPrefix>
           <Link to={"/Dashboard"}>Dashboard</Link>
         </ListItem>
-        <ListItem>
+        <ListItem className="hover:bg-white hover:text-black">
           <ListItemPrefix>
             <svg
               width="20"
@@ -72,7 +72,7 @@ function DefaultSidebar() {
           </ListItemPrefix>
           <Link to="/Catalog">Catalog</Link>
         </ListItem>
-        <ListItem>
+        <ListItem className="hover:bg-white hover:text-black">
           <ListItemPrefix>
             <svg
               width="24"
@@ -104,7 +104,7 @@ function DefaultSidebar() {
             />
           </ListItemSuffix> */}
         </ListItem>
-        <ListItem>
+        <ListItem className="hover:bg-white hover:text-black">
           <ListItemPrefix>
             <svg
               width="24"
@@ -143,13 +143,13 @@ function DefaultSidebar() {
           </ListItemPrefix>
           <Link to="/Users">Users</Link>
         </ListItem>
-        <ListItem>
+        <ListItem className="hover:bg-white hover:text-black">
           <ListItemPrefix>
             <Cog6ToothIcon className="h-5 w-5" />
           </ListItemPrefix>
           Settings
         </ListItem>
-        <ListItem>
+        <ListItem className="hover:bg-white hover:text-black">
           <ListItemPrefix>
             <PowerIcon className="h-5 w-5" />
           </ListItemPrefix>

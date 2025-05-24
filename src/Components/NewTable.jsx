@@ -5,9 +5,8 @@ import {
   MRT_ToggleFiltersButton,
 } from "material-react-table";
 
-
 // Icons Imports
-import { AccountCircle, Margin, Send } from "@mui/icons-material";
+import { AccountCircle, Margin, Send, Subject } from "@mui/icons-material";
 import { Add } from "@mui/icons-material";
 import {
   Box,
@@ -17,8 +16,20 @@ import {
   Typography,
   lighten,
 } from "@mui/material";
-export const CustomMaterialReactTable  = ({ isBook, title, columns,data }) => {
+import { DialogBox } from "./ShowDialog";
+import { useState } from "react";
+import { BooksData } from "./BooksData";
 
+export const CustomMaterialReactTable = ({
+  isBook,
+  title,
+  columns,
+  data,
+  fetchData,
+}) => {
+  const [open, setOpen] = useState(false);
+  const [currentRow, setcurrentRow] = useState({});
+  const handleOpen = () => setOpen(!open);
 
   const table = useMaterialReactTable({
     columns,
@@ -32,6 +43,7 @@ export const CustomMaterialReactTable  = ({ isBook, title, columns,data }) => {
     enableColumnActions: false,
     enableSorting: false,
     enableColumnDragging: false,
+    enableStickyHeader: true,
     // enableRowSelection: true,
     initialState: {
       showColumnFilters: false,
@@ -57,13 +69,22 @@ export const CustomMaterialReactTable  = ({ isBook, title, columns,data }) => {
       shape: "rounded",
       variant: "outlined",
     },
+    muiTableContainerProps: {
+      sx: {
+        maxHeight: "400px", // Or whatever height you want
+        overflowY: "auto",
+      },
+    },
     // renderDetailPanel: ({ row }) => <></>,
-    renderRowActionMenuItems: ({ closeMenu }) => [
+    renderRowActionMenuItems: ({ row, closeMenu }) => [
       <MenuItem
         key={0}
         onClick={() => {
           // View profile logic...
+          console.log("roeewww esit", row);
 
+          setcurrentRow(row.original);
+          setOpen(true);
           closeMenu();
         }}
         sx={{ m: 0 }}
@@ -75,15 +96,25 @@ export const CustomMaterialReactTable  = ({ isBook, title, columns,data }) => {
       </MenuItem>,
       <MenuItem
         key={1}
-        onClick={() => {
+        onClick={async () => {
+          console.log("row", row);
+
+          try {
+            await fetch(BooksData + `/${row.original.id}`, {
+              method: "DELETE",
+            });
+            fetchData();
+          } catch (e) {
+            console.error("Can't get data:", e);
+          }
           // Send email logic...
           closeMenu();
         }}
         sx={{ m: 0 }}
       >
-        <ListItemIcon>
+        {/* <ListItemIcon>
           <Send />
-        </ListItemIcon>
+        </ListItemIcon> */}
         Delete
       </MenuItem>,
     ],
@@ -145,9 +176,15 @@ export const CustomMaterialReactTable  = ({ isBook, title, columns,data }) => {
               <Button
                 variant="contained"
                 startIcon={<Add />}
-                onClick={() => {
-                  console.log(isBook ? "Add Book clicked" : "Add User clicked");
-                }}
+                onClick={handleOpen}
+                //   async () => {
+                //   // console.log(isBook ? "Add Book clicked" : "Add User clicked");
+                //   const res = await fetch(BooksData, {
+                //     method: "GET",
+                //   });
+                //   const data = await res.json();
+                //   console.log(data);
+                // }}
                 sx={{
                   backgroundColor: "black",
                   color: "white",
@@ -172,7 +209,13 @@ export const CustomMaterialReactTable  = ({ isBook, title, columns,data }) => {
 
   return (
     <div className="custom-table-wrapper w-[95%]">
-      <MaterialReactTable table={table} columns={columns} data={data}/>
+      <MaterialReactTable table={table} columns={columns} data={data} />
+      <DialogBox
+        open={open}
+        currentRow={currentRow}
+        handleOpen={handleOpen}
+        fetchData={fetchData}
+      />
     </div>
   );
 };
