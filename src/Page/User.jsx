@@ -1,25 +1,20 @@
+import React from "react";
 import React, { useMemo, useState } from "react";
 import Table from "../Components/Table";
 import ExampleWithLocalizationProvider from "../Components/Table";
-import { BooksData } from "../Components/BooksData";
+import { UserData } from "../Components/UserData";
 import { useEffect } from "react";
 
-function BooksPage() {
+function Userpage() {
   const [showData, setShowData] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
 
-  const BooksColumns = useMemo(
+  const UserColumns = useMemo(
     () => [
       { accessorKey: "id", header: "ID" },
       { accessorKey: "name", header: "Name" },
-      { accessorKey: "language", header: "Language" },
-      { accessorKey: "type", header: "Type" },
-      { accessorKey: "quantity", header: "Quantity" },
-      {
-        accessorKey: "available",
-        header: "Enrolled",
-        Cell: ({ cell }) => (cell.getValue() ? "Yes" : "No"),
-      },
+      { accessorKey: "email", header: "Email" },
+      { accessorKey: "user", header: "UserName" },
     ],
     []
   );
@@ -31,7 +26,7 @@ function BooksPage() {
 
   async function fetchData() {
     try {
-      const response = await fetch(BooksData, {
+      const response = await fetch(UserData, {
         method: "GET",
       });
 
@@ -41,22 +36,19 @@ function BooksPage() {
 
       return data;
     } catch (e) {
-      console.error("Can't get data:", e);
+      setShowData([]);
     }
   }
-
   return (
     <div>
       <ExampleWithLocalizationProvider
-        btnTitle={"Add Book"}
-        title={"Book Management"}
-        columns={BooksColumns}
-        data={showData}
-        fetchData={fetchData}
-        // showDialog={}
+        btnTitle="Add User"
+        title={"Users Management"}
+        columns={UserColumns}
+        data={UserData}
       />
     </div>
   );
 }
 
-export default BooksPage;
+export default Userpage;

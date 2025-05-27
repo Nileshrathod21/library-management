@@ -8,7 +8,8 @@ import { CustomMaterialReactTable } from "./NewTable";
 // Date Picker Imports - these should just be in your Context Provider
 
 const ExampleWithLocalizationProvider = ({
-  isBook,
+  btnTitle,
+  isCatalog,
   title,
   columns,
   data,
@@ -17,11 +18,12 @@ const ExampleWithLocalizationProvider = ({
   // App.tsx or AppProviders file
   <LocalizationProvider dateAdapter={AdapterDayjs}>
     <CustomMaterialReactTable
-      isBook={isBook}
       title={title}
       columns={columns}
+      isCatalog={isCatalog}
       data={data}
       fetchData={fetchData}
+      btnTitle={btnTitle}
     />
   </LocalizationProvider>
 );

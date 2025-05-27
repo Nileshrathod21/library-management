@@ -24,7 +24,7 @@ export function DialogBox({ open, currentRow, handleOpen, fetchData }) {
     type: "",
     language: "",
     available: "",
-    quantity: "",
+    quantity: {},
   });
   console.log("init va");
   useEffect(() => {
@@ -275,7 +275,7 @@ export function DialogBox({ open, currentRow, handleOpen, fetchData }) {
                 type: "",
                 language: "",
                 available: "",
-                quantity: "",
+                quantity: {},
               });
             }}
           >

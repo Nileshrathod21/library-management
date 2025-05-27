@@ -21,7 +21,8 @@ import { useState } from "react";
 import { BooksData } from "./BooksData";
 
 export const CustomMaterialReactTable = ({
-  isBook,
+  btnTitle,
+  isCatalog = false,
   title,
   columns,
   data,
@@ -139,7 +140,7 @@ export const CustomMaterialReactTable = ({
               alignItems: "center",
             }}
           >
-            {typeof isBook === "boolean" ? (
+            {!isCatalog ? (
               <h1 className="font-bold text-xl">{title}</h1>
             ) : (
               <>
@@ -172,7 +173,7 @@ export const CustomMaterialReactTable = ({
           </Box>
 
           <Box sx={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-            {(isBook === true || isBook === false) && (
+            {btnTitle && (
               <Button
                 variant="contained"
                 startIcon={<Add />}
@@ -196,7 +197,7 @@ export const CustomMaterialReactTable = ({
                   },
                 }}
               >
-                {isBook ? "Add Book" : "Add User"}
+                {btnTitle}
               </Button>
             )}
 
@@ -209,7 +210,12 @@ export const CustomMaterialReactTable = ({
 
   return (
     <div className="custom-table-wrapper w-[95%]">
-      <MaterialReactTable table={table} columns={columns} data={data} />
+      <MaterialReactTable
+        table={table}
+        isCatalog={isCatalog}
+        columns={columns}
+        data={data}
+      />
       <DialogBox
         open={open}
         currentRow={currentRow}

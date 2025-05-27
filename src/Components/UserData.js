@@ -1,8 +1,8 @@
 export const UserData = [
-  { id: 1, name: "Bhadresh", grade: "A", enrolled: true },
-  { id: 2, name: "Vishal", grade: "B", enrolled: false },
-  { id: 3, name: "Chirag", grade: "A", enrolled: true },
-  { id: 4, name: "Brijesh", grade: "B", enrolled: false },
-  { id: 5, name: "Lucky", grade: "A", enrolled: true },
-  { id: 6, name: "chanden", grade: "B", enrolled: false },
+  { id: 1, name: "Bhadresh", email: "xyz@book.com", user: "xyz" },
+  { id: 2, name: "Vishal", email: "xyz@book.com", user: "xyz" },
+  { id: 3, name: "Chirag", email: "xyz@book.com", user: "xyz" },
+  { id: 4, name: "Brijesh", email: "xyz@book.com", user: "xyz" },
+  { id: 5, name: "Lucky", email: "xyz@book.com", user: "xyz" },
+  { id: 6, name: "chanden", email: "xyz@book.com", user: "xyz" },
 ];

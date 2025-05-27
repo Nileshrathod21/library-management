@@ -1,19 +1,11 @@
-import { useMemo } from "react";
 import ReactDOM from "react-dom/client";
-import { ThemeProvider } from "@material-tailwind/react";
-import ExampleWithLocalizationProvider from "./Components/Table";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Components/Layout";
 import Dashboard from "./Components/dashboardgraph";
-import { catlogData } from "../TableData";
-import { Box } from "@mui/material";
-import { BooksData } from "./Components/BooksData";
-import { UserData } from "./Components/UserData";
-import SignupPage from "./Components/Signupforme";
-import { useEffect } from "react";
-import { method } from "detect-libc";
-import Book from "./Page/Book";
+
 import BooksPage from "./Page/Book";
+import Userpage from "./Page/User";
+import Catalog from "./Page/Catalog";
 
 export function Applayout() {
   // return (
@@ -30,184 +22,24 @@ export function Applayout() {
   //   </ThemeProvider>
   // );
 
-  const UserColumns = useMemo(
-    () => [
-      { accessorKey: "id", header: "ID" },
-      { accessorKey: "name", header: "Name" },
-      { accessorKey: "grade", header: "Grade" },
-      {
-        accessorKey: "enrolled",
-        header: "Enrolled",
-        Cell: ({ cell }) => (cell.getValue() ? "Yes" : "No"),
-      },
-    ],
-    []
-  );
-
-  const catalogTable = useMemo(
-    () => [
-      {
-        accessorKey: "id",
-        header: "ID",
-        size: 100,
-      },
-      {
-        accessorKey: "userId",
-        header: "User ID",
-        size: 150,
-      },
-      {
-        accessorKey: "amount",
-        header: "Amount",
-        size: 120,
-        Cell: ({ cell }) => `$${cell.getValue()?.toFixed(2)}`, // format as currency
-      },
-      {
-        accessorFn: (row) => `${row.firstName} ${row.lastName}`, // accessorFn used to join multiple data into a single cell
-        id: "name", // id is still required when using accessorFn instead of accessorKey
-        header: "Name",
-        size: 250,
-        Cell: ({ renderedCellValue, row }) => (
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "1rem",
-            }}
-          >
-            {/* using renderedCellValue instead of cell.getValue() preserves filter match highlighting */}
-            <span>{renderedCellValue}</span>
-          </Box>
-        ),
-      },
-      {
-        accessorFn: (row) => new Date(row.startDate), // convert to Date for sorting and filtering
-        id: "startDate",
-        header: "Start Date",
-        filterVariant: "date",
-        filterFn: "lessThan",
-        sortingFn: "datetime",
-        Cell: ({ cell }) => cell.getValue()?.toLocaleDateString(), // render Date as a string
-        Header: ({ column }) => <em>{column.columnDef.header}</em>, // custom header markup
-        muiFilterTextFieldProps: {
-          sx: {
-            minWidth: "250px",
-          },
-        },
-      },
-      {
-        accessorKey: "createdBy", // accessorKey used to define `data` column. `id` gets set to accessorKey automatically
-        enableClickToCopy: true,
-        filterVariant: "autocomplete",
-        header: "Created By",
-        size: 300,
-      },
-
-      {
-        accessorKey: "description", // hey a simple column for once
-        header: "Description",
-        size: 350,
-      },
-    ],
-    []
-  );
+  // const UserColumns = useMemo(
+  //   () => [
+  //     { accessorKey: "id", header: "ID" },
+  //     { accessorKey: "name", header: "Name" },
+  //     { accessorKey: "email", header: "Email" },
+  //     { accessorKey: "user", header: "UserName" },
+  //   ],
+  //   []
+  // );
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/book" element={<BooksPage />} />
-          <Route
-            path="/Users"
-            element={
-              <ExampleWithLocalizationProvider
-                isBook={false}
-                title={"Users Management"}
-                columns={UserColumns}
-                data={UserData}
-
-                // column={useMemo(
-                //   () => [
-                //     {
-                //       accessorKey: "id",
-                //       header: "ID",
-                //       size: 100,
-                //     },
-                //     {
-                //       accessorKey: "userId",
-                //       header: "User ID",
-                //       size: 150,
-                //     },
-                //     {
-                //       accessorKey: "amount",
-                //       header: "Amount",
-                //       size: 120,
-                //       Cell: ({ cell }) => `$${cell.getValue()?.toFixed(2)}`, // format as currency
-                //     },
-                //     {
-                //       accessorFn: (row) => `${row.firstName} ${row.lastName}`, // accessorFn used to join multiple data into a single cell
-                //       id: "name", // id is still required when using accessorFn instead of accessorKey
-                //       header: "Name",
-                //       size: 250,
-                //       Cell: ({ renderedCellValue, row }) => (
-                //         <Box
-                //           sx={{
-                //             display: "flex",
-                //             alignItems: "center",
-                //             gap: "1rem",
-                //           }}
-                //         >
-                //           {/* using renderedCellValue instead of cell.getValue() preserves filter match highlighting */}
-                //           <span>{renderedCellValue}</span>
-                //         </Box>
-                //       ),
-                //     },
-                //     {
-                //       accessorFn: (row) => new Date(row.startDate), // convert to Date for sorting and filtering
-                //       id: "startDate",
-                //       header: "Start Date",
-                //       filterVariant: "date",
-                //       filterFn: "lessThan",
-                //       sortingFn: "datetime",
-                //       Cell: ({ cell }) => cell.getValue()?.toLocaleDateString(), // render Date as a string
-                //       Header: ({ column }) => (
-                //         <em>{column.columnDef.header}</em>
-                //       ), // custom header markup
-                //       muiFilterTextFieldProps: {
-                //         sx: {
-                //           minWidth: "250px",
-                //         },
-                //       },
-                //     },
-                //     {
-                //       accessorKey: "createdBy", // accessorKey used to define `data` column. `id` gets set to accessorKey automatically
-                //       enableClickToCopy: true,
-                //       filterVariant: "autocomplete",
-                //       header: "Created By",
-                //       size: 300,
-                //     },
-
-                //     {
-                //       accessorKey: "description", // hey a simple column for once
-                //       header: "Description",
-                //       size: 350,
-                //     },
-                //   ],
-                //   []
-                // )}
-              />
-            }
-          />
+          <Route path="/Users" element={<Userpage />} />
           <Route path="/Dashboard" element={<Dashboard />} />
-          <Route
-            path="/Catalog"
-            element={
-              <ExampleWithLocalizationProvider
-                columns={catalogTable}
-                data={catlogData}
-              />
-            }
-          />
+          <Route path="/Catalog" element={<Catalog />} />
         </Route>
       </Routes>
       {/* <SignupPage /> */}
