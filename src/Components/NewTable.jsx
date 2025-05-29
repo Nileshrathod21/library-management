@@ -17,8 +17,9 @@ import {
   lighten,
 } from "@mui/material";
 import { DialogBox } from "./ShowDialog";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BooksData } from "./BooksData";
+import { FormDataContext } from "./FormDataContext";
 
 export const CustomMaterialReactTable = ({
   btnTitle,
@@ -27,11 +28,13 @@ export const CustomMaterialReactTable = ({
   columns,
   data,
   fetchData,
+  form,
+  formTitle,
 }) => {
   const [open, setOpen] = useState(false);
-  const [currentRow, setcurrentRow] = useState({});
   const handleOpen = () => setOpen(!open);
 
+  const { formData, setFormData } = useContext(FormDataContext);
   const table = useMaterialReactTable({
     columns,
     data, // data must be memoized or stable (useState, useMemo, defined outside of this component, etc.)
@@ -77,6 +80,7 @@ export const CustomMaterialReactTable = ({
       },
     },
     // renderDetailPanel: ({ row }) => <></>,
+
     renderRowActionMenuItems: ({ row, closeMenu }) => [
       <MenuItem
         key={0}
@@ -84,7 +88,7 @@ export const CustomMaterialReactTable = ({
           // View profile logic...
           console.log("roeewww esit", row);
 
-          setcurrentRow(row.original);
+          setFormData(row.original);
           setOpen(true);
           closeMenu();
         }}
@@ -177,7 +181,10 @@ export const CustomMaterialReactTable = ({
               <Button
                 variant="contained"
                 startIcon={<Add />}
-                onClick={handleOpen}
+                onClick={() => {
+                  setFormData({});
+                  handleOpen();
+                }}
                 //   async () => {
                 //   // console.log(isBook ? "Add Book clicked" : "Add User clicked");
                 //   const res = await fetch(BooksData, {
@@ -218,9 +225,10 @@ export const CustomMaterialReactTable = ({
       />
       <DialogBox
         open={open}
-        currentRow={currentRow}
+        form={form}
         handleOpen={handleOpen}
         fetchData={fetchData}
+        formTitle={formTitle}
       />
     </div>
   );

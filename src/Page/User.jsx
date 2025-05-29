@@ -4,6 +4,7 @@ import Table from "../Components/Table";
 import ExampleWithLocalizationProvider from "../Components/Table";
 import { UserData } from "../Components/UserData";
 import { useEffect } from "react";
+import UserForme from "./AddUserForme";
 
 function Userpage() {
   const [showData, setShowData] = useState([]);
@@ -14,7 +15,7 @@ function Userpage() {
       { accessorKey: "id", header: "ID" },
       { accessorKey: "name", header: "Name" },
       { accessorKey: "email", header: "Email" },
-      { accessorKey: "user", header: "UserName" },
+      { accessorKey: "username", header: "UserName" },
     ],
     []
   );
@@ -36,7 +37,7 @@ function Userpage() {
 
       return data;
     } catch (e) {
-      setShowData([]);
+      console.error("Can't get data:", e);
     }
   }
   return (
@@ -45,7 +46,10 @@ function Userpage() {
         btnTitle="Add User"
         title={"Users Management"}
         columns={UserColumns}
-        data={UserData}
+        data={showData}
+        fetchData={fetchData}
+        form={<UserForme fetchData={fetchData} />}
+        formTitle={"Add User Details"}
       />
     </div>
   );

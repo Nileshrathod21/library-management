@@ -3,6 +3,7 @@ import Table from "../Components/Table";
 import ExampleWithLocalizationProvider from "../Components/Table";
 import { BooksData } from "../Components/BooksData";
 import { useEffect } from "react";
+import AddBookForme from "./AddBookForme";
 
 function BooksPage() {
   const [showData, setShowData] = useState([]);
@@ -53,6 +54,9 @@ function BooksPage() {
         columns={BooksColumns}
         data={showData}
         fetchData={fetchData}
+        form={<AddBookForme fetchData={fetchData} />}
+        formTitle={"Add Book Details"}
+
         // showDialog={}
       />
     </div>
