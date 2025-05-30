@@ -46,6 +46,19 @@ function BooksPage() {
     }
   }
 
+  const handleDelete = async (row) => {
+    try {
+      await fetch(BooksData + `/${row.original.id}`, {
+        method: "DELETE",
+      });
+      fetchData();
+    } catch (e) {
+      console.error("Can't get data:", e);
+    }
+    // Send email logic...
+    // setFormData(row.original.id)
+  };
+
   return (
     <div>
       <ExampleWithLocalizationProvider
@@ -56,7 +69,7 @@ function BooksPage() {
         fetchData={fetchData}
         form={<AddBookForme fetchData={fetchData} />}
         formTitle={"Add Book Details"}
-
+        handleDelete={handleDelete}
         // showDialog={}
       />
     </div>

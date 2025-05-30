@@ -16,6 +16,7 @@ const ExampleWithLocalizationProvider = ({
   fetchData,
   form,
   formTitle,
+  handleDelete,
 }) => (
   // App.tsx or AppProviders file
   <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -28,6 +29,7 @@ const ExampleWithLocalizationProvider = ({
       btnTitle={btnTitle}
       form={form}
       formTitle={formTitle}
+      handleDelete={handleDelete}
     />
   </LocalizationProvider>
 );

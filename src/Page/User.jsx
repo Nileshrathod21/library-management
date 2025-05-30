@@ -40,6 +40,18 @@ function Userpage() {
       console.error("Can't get data:", e);
     }
   }
+  const handleDelete = async (row) => {
+    try {
+      await fetch(UserData + `/${row.original.id}`, {
+        method: "DELETE",
+      });
+      fetchData();
+    } catch (e) {
+      console.error("Can't get data:", e);
+    }
+    // Send email logic...
+    // setFormData(row.original.id)
+  };
   return (
     <div>
       <ExampleWithLocalizationProvider
@@ -50,6 +62,7 @@ function Userpage() {
         fetchData={fetchData}
         form={<UserForme fetchData={fetchData} />}
         formTitle={"Add User Details"}
+        handleDelete={handleDelete}
       />
     </div>
   );

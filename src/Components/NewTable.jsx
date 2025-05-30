@@ -30,6 +30,7 @@ export const CustomMaterialReactTable = ({
   fetchData,
   form,
   formTitle,
+  handleDelete,
 }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
@@ -103,16 +104,7 @@ export const CustomMaterialReactTable = ({
         key={1}
         onClick={async () => {
           console.log("row", row);
-
-          try {
-            await fetch(BooksData + `/${row.original.id}`, {
-              method: "DELETE",
-            });
-            fetchData();
-          } catch (e) {
-            console.error("Can't get data:", e);
-          }
-          // Send email logic...
+          handleDelete(row);
           closeMenu();
         }}
         sx={{ m: 0 }}
