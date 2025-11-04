@@ -1,13 +1,13 @@
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "./Components/Layout";
-import Dashboard from "./Components/dashboardgraph";
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from './Components/Layout';
+import Dashboard from './Components/dashboardgraph';
 
-import BooksPage from "./Page/Book";
-import Userpage from "./Page/User";
-import Catalog from "./Page/Catalog";
-import { FormDataContext } from "./Components/FormDataContext";
-import { useState } from "react";
+import BooksPage from './Page/Book';
+import Userpage from './Page/User';
+import Catalog from './Page/Catalog';
+import { FormDataContext } from './Components/FormDataContext';
+import { useState } from 'react';
 
 export function Applayout() {
   const [formData, setFormData] = useState({});
@@ -28,5 +28,5 @@ export function Applayout() {
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Applayout />);
